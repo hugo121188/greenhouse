@@ -1,0 +1,64 @@
+extends common/layout.pug
+
+include ./mixin/dia.pug
+
+block content
+  h1= title
+  h3 Hallo Welt :)
+
+  div
+    canvas#myChart
+
+  script(src='https://cdn.jsdelivr.net/npm/chart.js')
+  
+  script.
+    const data = {
+      labels: [
+        - for(let configs of stunde)
+          +listItem(configs)
+      ],
+      datasets: [{
+        label: 'Unten',
+        backgroundColor: 'rgb(255, 106, 106)',
+        borderColor: 'rgb(255, 106, 106)',
+        pointRadius: 0,
+        tension: 0.2,
+        data: [#{unten}] ,
+      },{
+        label: 'Oben',
+        backgroundColor: 'rgb(0, 191, 255)',
+        borderColor: 'rgb(0, 191, 255)',
+        pointRadius: 0,
+        tension: 0.2,
+        data: [#{oben}] ,
+      },{
+        label: 'aussen',
+        backgroundColor: 'rgb(173, 255, 47)',
+        borderColor: 'rgb(173, 255, 47)',
+        pointRadius: 0,
+        tension: 0.2,
+        data: [#{aussen}] ,
+      }]
+    };
+
+
+    const config = {
+      type: 'line',
+      data,
+      options: {
+        scales: { 
+          xAxis: [{
+            ticks: {
+              max: 10,
+              stepSize: 10
+            }
+          }]
+        }
+      }
+    };
+
+
+    var myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );

@@ -56,7 +56,7 @@ print(("Temperatur unten um " + time.strftime('%H:%M:%S') +": " + str(readTempLi
 tOben= str(readTempLines(oben)[0])
 tUnten=str(readTempLines(unten)[0])
 tAussen=str(readTempLines(aussen)[0])
-#tAussen = 0
+tAussen = 0
 cursor = conn.cursor()
 try:
     cursor.execute(

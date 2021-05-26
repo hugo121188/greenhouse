@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
  router.get('/', function(req, res, next) {
-  res.render('user', { title: 'Usergedöhnse...', subTitle: "Hallo du ;)" });
+  res.render('wurmBlog', { title: 'Wurmwelten...', subTitle: "Kompostwürmer. Was können sie, wozu sind sie gut?" });
 });
 
 
